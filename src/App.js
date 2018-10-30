@@ -1,48 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import NavBar from './components/NavBar';
-import { fire } from './Firebase'
+
+import { fire, getFireDB } from './utils/Firebase';
+
+import MainView from './components/views/MainView';
 
 class App extends Component {
 	
+	// Define state
+	state = {counter: 0};
+	
+	// Define defaults
 	constructor() {
 		super();
 		fire();
-	};
+		this.setState({counter: 0});
+	}
 	
-	state = {
-		counter: 0
-	};
-
-	handleIncrease = () => {
-		this.setState({
-			counter: (this.state.counter + 1)
-		});	
-	};
+	componentDidMount() {
+		getFireDB();
+	}
 	
+	// Define renderer
 	render() {
 		return (
 			<div className="App">
-				<NavBar />
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<p>
-						Edit <code>src/App.js</code> and save to reload..!
-					</p>
-					<a
-						className="App-link"
-						href="https://reactjs.org"
-						target="_blank"
-						rel="noopener noreferrer"
-						>
-						Learn React
-					</a>
-					Counter: {this.state.counter}
-					<button onClick={this.handleIncrease}>+</button>
-					
-				</header>
+				<MainView />
 			</div>
 		);
 	};
