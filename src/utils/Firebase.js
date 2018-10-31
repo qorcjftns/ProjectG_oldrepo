@@ -1,8 +1,7 @@
 import * as firebase from 'firebase';
+import {config} from './Firebase-config';
 
 let database;
-
-import config from './Firebase-config';
 
 export const fire = () => {
 	if (!firebase.apps.length) {
