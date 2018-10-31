@@ -16,9 +16,9 @@ class Block extends Component {
 			background: topColor
 		};
 		
-		var top = ((pos.x + pos.y) * 35) - 25;
+		var top = ((pos.x + pos.y) * 35) - (pos.z * 71) - 25;
 		var left = ((pos.x - pos.y) * 70) - 50;
-		var zindex = (pos.x + pos.y) + 150;
+		var zindex = ((pos.x + pos.y) + 150) + (pos.z * 2);
 		
 		const blockstyle = {
 			top: 		"calc(50% + " + top + "px)",
